@@ -1,0 +1,12 @@
+{
+  "name": "kibana-hidden-title-fix",
+  "version": "1.0.0",
+  "description": "A workaround for the hidden title BWC bug introduced in Kibana 7.10",
+  "main": "index.js",
+  "author": "ThomThomson",
+  "license": "MIT",
+  "dependencies": {
+    "@elastic/elasticsearch": "^7.11.2",
+    "prompt-async": "^0.9.9"
+  }
+}
