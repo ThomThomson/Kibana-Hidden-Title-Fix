@@ -50,6 +50,7 @@ const updatePanelsJson = (originalJson) => {
           "type": "dashboard"
         }
       }
+      "size": 10000
     }
   });
   allDashboards.body.hits?.hits?.forEach(async (hit) => {
