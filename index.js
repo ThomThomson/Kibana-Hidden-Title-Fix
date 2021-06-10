@@ -49,11 +49,14 @@ const updatePanelsJson = (originalJson) => {
         "match": {
           "type": "dashboard"
         }
-      }
+      },
       "size": 10000
     }
   });
-  allDashboards.body.hits?.hits?.forEach(async (hit) => {
+  if(!allDashboards.body.hits?.hits) { 
+    return;
+  }
+  for (const hit of allDashboards.body.hits?.hits) {
     const dashboardId = hit._id;
     const dashboard = hit._source.dashboard;
     console.log('Analyzing: ', dashboard.title);
@@ -61,7 +64,7 @@ const updatePanelsJson = (originalJson) => {
 
     if (updateCount === 0) {
       console.log('--No panels to update\n');
-      return;
+      continue;
     }
 
     await client.update({
@@ -76,5 +79,5 @@ const updatePanelsJson = (originalJson) => {
       }
     });
     console.log(`--updated ${updateCount} panels\n`);
-    });
+  }
 })();
